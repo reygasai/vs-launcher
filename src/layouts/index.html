@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vintage Story Launcher</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <div id="app">
+        <div class="header">
+            <button class="header-button" id="hide-window">
+                <img src="../assets/images/hide-button.png" alt="hide-button">
+            </button>
+            <button class="header-button" id="close-window">
+                <img src="../assets/images/close-button.png" alt="close-button">
+            </button>
+        </div>
+        <div id="container">
+            <div class="sidebar">
+                <div class="sidebar-content">
+                    <img class="logotype" src="../assets/images/logotype.png" alt="Logotype">
+                    <div class="login-form">
+                        <div class="login-form-header">
+                            <label class="textbox" id="login">
+                                <div class="icon">
+                                    <img src="../assets/images/user-icon.png" alt="Иконка логина">
+                                </div>
+                                <input type="text" name="login" placeholder="Введите ник">
+                            </label>
+    
+                            <label class="textbox" id="password">
+                                <div class="icon">
+                                    <img src="../assets/images/password-icon.png" alt="Иконка пароля">
+                                </div>
+                                <input type="password" name="password" placeholder="Введите пароль">
+                            </label>
+                        </div>
+
+                        <div class="login-form-footer">
+                            <label class="textbox" id="version">
+                                <div class="icon">
+                                    <img src="../assets/images/password-icon.png" alt="Иконка пароля">
+                                </div>
+                                <select name="version" id="version-select">
+                                    <option value="1-14-0-pre2">Версия 1.14.0-pre2</option>
+                                    <option value="1-14-0-pre1">Версия 1.14.0-pre1</option>
+                                    <option value="1-13-0">Версия 1.13.0 stable</option>
+                                </select>
+                            </label>
+                            <button class="login-form-button" id="download-button">
+                                <div class="icon">
+                                    <img src="../assets/images/download-icon.png" alt="Иконка скачивания">
+                                </div>
+                                <div class="name">Скачать клиент игры</div>
+                            </button>      
+                        </div>
+                    </div>
+                    <div class="social-container">
+                        <div class="social-buttons">
+                            <button class="social-button vk" link="https://vk.com/vintage_story_club">
+                                <img src="../assets/images/button-social-vk.png" alt="Иконка ВКонтакте">
+                            </button>
+
+                            <button class="social-button discord" link="#">
+                                <img src="../assets/images/button-social-discord.png" alt="Иконка Discord">
+                            </button>
+
+                            <button class="social-button youtube" link="#">
+                                <img src="../assets/images/button-social-youtube.png" alt="Иконка YouTube">
+                            </button>
+
+                            <button class="social-button link" link="#">
+                                <img src="../assets/images/button-social-link.png" alt="Иконка сайта">
+                            </button>
+                        </div>
+                        <div class="social-description">
+                            Хлеб есть еда! Кабанчик тоже..
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content">
+                <div class="news">
+                    <div class="swiper-container news-container">
+                        <div class="swiper-wrapper news-wrapper">
+                            <div class="swiper-slide">
+                                <div class="news-slide">
+                                    <div class="news-slide-title">Обновление 1.14.0-pre.2!</div>
+                                    <div class="news-slide-description">
+                                        Готовность стального века на 50%, Готовые классы персонажей и сама кастомизация персонажей, обновление руин с детализированными блоками и блокам, которые покрыты мхом и лишайниками, влияние температуры и <b>сыры!</b>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">Slide 2</div>
+                            <div class="swiper-slide">Slide 3</div>
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </div>
+                <div class="download">
+                    <div class="download-client">
+                        <div class="progress-number">50%</div>
+                        <div class="progress-data">
+                            <div class="progress-info">Загрузка assets.zip</div>
+                            <div class="progress-line">
+                                <span class="line-data" style="width: 50%;"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./main_window/index.js"></script>
+</body>
+</html>
