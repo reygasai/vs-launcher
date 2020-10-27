@@ -2,11 +2,11 @@
 import './assets/styles/main.scss';
 
 /* Подключаем js-логику к проекту */
-import LoginForm from './assets/scripts/system/loginform';
+import Login from './assets/scripts/system/login';
 import News from './assets/scripts/system/news';
 
-const loginform = new LoginForm
-loginform.init();
+const login = new Login
+login.init();
 
 const news = new News;
 news.init();

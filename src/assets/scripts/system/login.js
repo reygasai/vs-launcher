@@ -1,11 +1,14 @@
+import {UserManager} from './utils';
+
 export default class LoginForm {
     constructor() {
         this.container = document.querySelector('.login-form');
     }
 
     init() {
-        console.log(this.container);
         this.onFocusTextbox();
+        let abc = new UserManager;
+        abc.defaultFolderCreate();
     }
 
     onFocusTextbox() {

@@ -1,4 +1,6 @@
 const CopyPlugin = require('copy-webpack-plugin');
+const path = require('path');
+
 const rules = require('./webpack.rules');
 
 rules.push({
@@ -18,8 +20,8 @@ module.exports = {
   plugins: [
     new CopyPlugin({
       patterns: [
-        { from: './src/assets/fonts', to: './assets/fonts' },
-        { from: './src/assets/images', to: './assets/images' },
+        { from: path.resolve(__dirname, 'src', 'assets', 'fonts'), to: path.resolve(__dirname, '.webpack', 'renderer', 'fonts') },
+        { from: path.resolve(__dirname, 'src', 'assets', 'images'), to: path.resolve(__dirname, '.webpack', 'renderer', 'images') },
       ],
     }),
   ],
