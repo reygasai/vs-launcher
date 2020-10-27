@@ -82,6 +82,7 @@
     "url-loader": "^4.1.1"
   },
   "dependencies": {
+    "choices.js": "^9.0.1",
     "electron-squirrel-startup": "^1.0.0",
     "swiper": "^6.3.4"
   }

@@ -43,6 +43,17 @@
         align-items: center;
         justify-content: center;
         cursor: pointer;
+        position: relative;
+
+        &::before {
+            position: absolute;
+            left: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            content: '';
+            display: block;
+        }
 
         &:first-child {
             margin-right: 13px;
