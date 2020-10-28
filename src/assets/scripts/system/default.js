@@ -21,7 +21,14 @@ export const DEFAULT = {
         schema: {
             username: '',
             password: '',
-            version: ''
+            version: '',
         }
     }
 };
+
+export const DEFAULT_SELECT_VERSION_SETTINGS = {
+    loadingText: 'Загружаем версии..',
+    itemSelectText: 'Выбрать',
+    noResultsText: 'Ничего не найдено ;(',
+    duplicateItemsAllowed: false,
+}

@@ -1,4 +1,6 @@
-import { DEFAULT } from './default';
+import { DEFAULT, DEFAULT_SELECT_VERSION_SETTINGS } from './default';
+import Messages from './messages';
+import Choices from "choices.js";
 
 const FileSystem = require('fs');
 const Path = require('path');
@@ -110,18 +112,23 @@ export class User extends Settings {
 
         this.login = this.container.querySelector('label#login input[name="login"]');
         this.password = this.container.querySelector('label#password input[name="password"]');
-        this.version = this.container.querySelector('label#password input[name="password"]'); //Для теста
 
-        this.settingsData = this.loadSettings(); 
+        this.version = this.container.querySelector('select[name="version"]');
+        this.choices = new Choices(document.getElementById('version-select'), DEFAULT_SELECT_VERSION_SETTINGS);
+
+        this.settingsData = this.loadSettings();
     }
 
     init() {
         this.onFocusTextbox();
-        this.buttonHandler();
+        this.onFocusChoices();
 
+        this.buttonHandler();
+        
         if(this.settingsData !== false && !(this.settingsData instanceof Boolean)) {
             this.login.value = this.settingsData.username;
             this.password.value = this.settingsData.password;
+            this.choices.setChoiceByValue(this.settingsData.version);
         }
     }
 
@@ -130,24 +137,53 @@ export class User extends Settings {
         this.container.addEventListener("focusout", () => this.changeFocusTextbox(event));
     }
 
+    onFocusChoices() {
+        let observerInput = new MutationObserver(mutationRecords => {
+            mutationRecords.forEach((mutation) => {
+                if(mutation.attributeName == "class") {
+                    if(mutation.target.classList.contains("is-focused")) {
+                        document.getElementById('version').classList.add('focused');  
+                    } else {
+                        document.getElementById('version').classList.remove('focused');
+                    }
+                } 
+            })
+        },);
+
+        observerInput.observe(document.querySelector('.choices'), {
+            attributes: true,
+        });
+    }
+
     changeFocusTextbox(event) {
-        if(event.target.tagName === 'INPUT') {
-            let parent = event.target.parentElement;
-            parent.classList.toggle('focused');
-        }
+        let parent = event.target.parentElement;
+        parent.classList.toggle('focused');
     }
 
     saveUserData() {
+        let errorMessages = [];
+
         let login = this.login.value;
-        //TODO: Проверочка на валидность
+        if(login.match("^(\\w|-){1,16}$") === null || login.length < 3) {
+            errorMessages.push('Поле с ником введено не верно!');
+        }
 
         let password = this.password.value;
-        //TODO: Проверочка на валидность
+        if(password.match("^(\\w|-){1,16}$") === null) {
+            errorMessages.push('Поле с паролем введено не верно!');
+        }
 
-        let version = this.version.value;
-        //TODO: Проверочка на валидность
+        let version = this.choices.getValue(true);
 
-        this.setSettingsConfig(login, password, version);
+        if(errorMessages.length > 0) {
+            errorMessages.push("Не используйте спецсимволы/латиницу в полях");
+            Messages.send(errorMessages);
+            
+            errorMessages = [];
+            return;
+        }
+
+        return this.setSettingsConfig(login, password, version);
     }
 
     buttonHandler() {

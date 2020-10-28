@@ -1,3 +1,7 @@
 @import './fonts/style';
-@import 'swiper/swiper-bundle.css';
+
+@import '/node_modules/swiper/swiper-bundle.css';
+
+@import './index/my-choices-style';
+
 @import './index/styles';

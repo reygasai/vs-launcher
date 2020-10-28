@@ -21,6 +21,74 @@
     font-family: 'TT Norms Regular';
 }
 
+#error {
+    position: absolute;
+    width: 50%;
+    display: flex;
+    padding: 10px;
+    background: #4a2c2c;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    flex-direction: column;
+    border: 1px solid #4a2c2c;
+    min-height: 60px;
+    justify-content: center;
+    opacity: 0;
+    right: -100%;
+    bottom: 0;
+    z-index: 10;
+    transition: 0.3s;
+
+    &.display {
+        opacity: 1;
+        right: 15px;
+    }
+
+    & > .error-title {
+        color: #e8e4e4;
+        margin-bottom: 10px;
+        font-size: 15px;
+        font-family: 'TT Norms Medium';
+    }
+
+    & > .error-content {
+        & > ul {
+            list-style-type: none;
+            & > li {
+                position: relative;
+                padding-left: 10px;
+                &:not(:last-child) {
+                    margin-bottom: 3px;
+                }
+
+                &::before {
+                    position: absolute;
+                    left: 0;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    background:#dacfcf;
+                    width: 4px;
+                    height: 4px;
+                    border-radius: 3px;
+                    content: '';
+                    display: block;
+                }
+            }
+        }
+    }
+}
+
+#drag-header-terra {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 60px;
+    -webkit-app-region: drag;
+    z-index: 1;
+}
+
 #container {
     display: flex;
     width: 100%;
@@ -33,6 +101,7 @@
     top: 0;
     padding: 15px;
     display: flex;
+    z-index: 10;
 
     & > .header-button {
         border: 0px solid transparent;
@@ -44,6 +113,7 @@
         justify-content: center;
         cursor: pointer;
         position: relative;
+        -webkit-app-region: no-drag;
 
         &::before {
             position: absolute;
@@ -240,7 +310,7 @@
                     }
                 }
                 
-                & > input, select {
+                & > input {
                     font-family: 'TT Norms Regular';
                     width: calc(100% - 10px);
                     background: #1d1917;
@@ -248,7 +318,6 @@
                     color: #dacfcf;
                     padding: 10px 10px 10px 18px;
                     border-radius: 5px;
-                    margin-left: -1px;
                     font-size: 14px;
                     margin-left: 10px;
 
@@ -260,10 +329,6 @@
                     &::placeholder {
                         color: #908989;
                     }
-                }
-
-                & > select {
-                    padding: 9px 18px 9px 16px;
                 }
             }
         }
@@ -277,6 +342,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    position: relative;
 
     .download {
         width: 100%;
@@ -398,7 +464,11 @@
                 }
     
                 & > .news-slide-description {
-                    line-height: 21px;
+                    line-height: 23px;
+                    
+                    & > p {
+                        margin-top: 10px;
+                    }
                 }
             }
         }

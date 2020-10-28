@@ -7,6 +7,7 @@
 </head>
 <body>
     <div id="app">
+        <div id="drag-header-terra"></div>
         <div class="header">
             <button class="header-button" id="hide-window">
                 <img src="/images/hide-button.png" alt="hide-button">
@@ -32,26 +33,26 @@
                                 <div class="icon">
                                     <img src="/images/password-icon.png" alt="Иконка пароля">
                                 </div>
-                                <input type="text" name="password" placeholder="Введите пароль">
+                                <input type="password" name="password" placeholder="Введите пароль">
                             </label>
                         </div>
 
                         <div class="login-form-footer">
                             <label class="textbox" id="version">
                                 <div class="icon">
-                                    <img src="/images/password-icon.png" alt="Иконка пароля">
+                                    <img src="/images/version-icon.png" alt="Иконка пароля">
                                 </div>
                                 <select name="version" id="version-select">
-                                    <option value="1-14-0-pre2">Версия 1.14.0-pre2</option>
-                                    <option value="1-14-0-pre1">Версия 1.14.0-pre1</option>
-                                    <option value="1-13-0">Версия 1.13.0 stable</option>
+                                    <option value="1-14-0-pre2">1.14.0-pre2</option>
+                                    <option value="1-14-0-pre1">1.14.0-pre1</option>
+                                    <option value="1-13-0">1.13.0 stable</option>
                                 </select>
                             </label>
                             <button class="login-form-button" id="start-button">
                                 <div class="icon">
                                     <img src="/images/download-icon.png" alt="Иконка скачивания">
                                 </div>
-                                <div class="name">Скачать клиент игры</div>
+                                <div class="name">Играть в Vintage Story</div>
                             </button>      
                         </div>
                     </div>
@@ -88,12 +89,45 @@
                                 <div class="news-slide">
                                     <div class="news-slide-title">Обновление 1.14.0-pre.2!</div>
                                     <div class="news-slide-description">
-                                        Готовность стального века на 50%, Готовые классы персонажей и сама кастомизация персонажей, обновление руин с детализированными блоками и блокам, которые покрыты мхом и лишайниками, влияние температуры и <b>сыры!</b>
+                                        <b>Просьба обратить внимание: это незаконченное обновление, которое в основном предназначается для тестеров и моддеров. Вы можете столкнуться с многочисленными багами, незавершенными механиками и проблемами производительности и сбоями.</b>
+                                        <br>
+                                        <br>
+                                        До v1.14-rc.1 мы все еще надеемся добавить:
+                                        <br>
+                                        <br>
+                                        - Стальной век (готов на 50%)
+                                        <br>
+                                        - Готовые классы персонажей и сама кастомизация персонажей
+                                        <br>
+                                        - Обновление руин с детализированными блоками и блокам, которые покрыты мхом и лишайниками
+                                        <br>
+                                        - Комплект брони из метеоритного железа
+                                        <br>
+                                        - Возможно, рыбы (но не механику ловли рыбы сейчас, простите!)
+                                        <br>
+                                        - Влияние температуры
                                     </div>
                                 </div>
                             </div>
-                            <div class="swiper-slide">Slide 2</div>
-                            <div class="swiper-slide">Slide 3</div>
+                            <div class="swiper-slide">
+                                <div class="news-slide">
+                                    <div class="news-slide-title">Ползунок звука погоды (v1.13.4)</div>
+                                    <div class="news-slide-description">
+                                        <b>Новое обновление можно скачать через менеджер аккаунтов (ну или спиратить, что я крайне не советую)</b>
+                                        <br>
+                                        <br>
+                                        - Добавлен ползунок звука погоды, чтобы изменять только звуки погоды
+                                        <br>
+                                        - Диалоговое окно среды (открываемое буквой C) теперь также показывает приблизительную частоту выпадения дождя.
+                                        <br>
+                                        - Доработан дождь. Немного уменьшилось количество осадков, благодаря чему тип дождя со временем стал чаще меняться. Исправлено несоответствие количества осадков между клиентом и сервером.
+                                        <br>
+                                        - Добавлено уведомление о загрузке мира.
+                                        <br>
+                                        - Сервер теперь падает, если обнаружен поврежденный чанк и когда он не находится в режиме восстановления, и другое...
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="swiper-pagination"></div>
                     </div>
@@ -108,6 +142,10 @@
                             </div>
                         </div>
                     </div>
+                </div>
+                <div id="error">
+                    <div class="error-title">Ошибка!</div>
+                    <div class="error-content"></div>
                 </div>
             </div>
         </div>

@@ -2,9 +2,11 @@
 import './assets/styles/main.scss';
 
 /* js */
-const { remote, app } = require('electron')
+const { remote, app, shell} = require('electron')
+
 import { DEFAULT } from './assets/scripts/system/default';
 import { User } from './assets/scripts/system/user';
+import News from './assets/scripts/system/news';
 
 /* Выводим случайное сообщение из DEFAULT конфига */
 let descriptionContainer = document.getElementById("description");
@@ -13,6 +15,10 @@ descriptionContainer.innerHTML = DEFAULT.description[Math.floor(Math.random() * 
 /* Грузим юзерменджер с конфиглоадером внутри */
 const userManager = new User;
 userManager.init();
+
+/* Грузим новости */
+const newsManager = new News;
+newsManager.init();
 
 /* Закрываем и скрываем приложение */
 let closeButton = document.getElementById("close-window");
@@ -25,11 +31,9 @@ hideButton.addEventListener('click', () => {
     remote.getCurrentWindow().minimize();
 });
 
-/* Тест новых селектов */
-import Choices from "choices.js";
-
-const example = new Choices(document.getElementById('version-select'), {
-    sorter: function(a, b) {
-      return b.label.length - a.label.length;
-    },
+/* Обрабатываем все кнопки с атрибутом link как ссылки и открываем их в другом браузере*/
+document.querySelector('#app').addEventListener('click', (event) => {
+    if (event.target.tagName === 'BUTTON' && event.target.hasAttribute('link')) {
+        shell.openExternal(event.target.getAttribute('link'));
+    }
 });
